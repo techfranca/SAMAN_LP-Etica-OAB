@@ -1,4 +1,5 @@
 import { ExpandableChapters } from "./expandable-chapters";
+import { ExpandableTestimonials } from "./expandable-testimonials";
 
 /* ─── Shared ─── */
 const CHECKOUT_LABEL = "QUERO SER APROVADO NA OAB";
@@ -606,21 +607,7 @@ export function SocialProofSection({ checkoutUrl }: { checkoutUrl: string }) {
           <span className="gradient-gold-text">depois da prova</span>
         </SectionTitle>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {prints.map((p, i) => (
-            <div
-              key={i}
-              className="rounded-xl border border-zinc-800/60 bg-dark-950/60 p-2 hover:border-gold-500/20 transition-colors"
-            >
-              <img
-                src={p.src}
-                alt={p.alt}
-                className="w-full rounded-lg"
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </div>
+        <ExpandableTestimonials prints={prints} />
 
         <p className="text-center text-sm text-zinc-500 mt-8 mb-6">
           Conversas reais entre alunos e o Prof. Leonardo no Instagram e WhatsApp
@@ -666,9 +653,6 @@ export function ForWhoSection({ checkoutUrl }: { checkoutUrl: string }) {
           </ul>
         </div>
 
-        <div className="text-center mt-8">
-          <CtaButton href={checkoutUrl} label="É PRA MIM, QUERO GARANTIR" size="md" />
-        </div>
       </div>
     </section>
   );
