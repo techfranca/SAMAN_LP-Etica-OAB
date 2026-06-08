@@ -1,3 +1,5 @@
+import { ExpandableChapters } from "./expandable-chapters";
+
 /* ─── Shared ─── */
 const CHECKOUT_LABEL = "QUERO SER APROVADO NA OAB";
 
@@ -104,7 +106,7 @@ export function HeroSection({ checkoutUrl }: { checkoutUrl: string }) {
         <div className="flex justify-center mb-8">
           <div className="w-56 sm:w-64 rounded-xl overflow-hidden shadow-2xl shadow-gold-500/10 border border-zinc-800/40">
             <img
-              src="/ebook-capa.webp"
+              src="/ebook-capa-v2.webp"
               alt="Ética Profissional para o Exame da OAB — Leonardo Cremasco"
               className="w-full"
             />
@@ -113,10 +115,9 @@ export function HeroSection({ checkoutUrl }: { checkoutUrl: string }) {
 
         {/* Subheadline */}
         <p className="text-base sm:text-lg lg:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Um material completo com 75 páginas de conteúdo com tudo que cai na
-          prova + videoaulas explicativas + aulão ao vivo pré-prova. Criado por
-          um ex-relator do Tribunal de Ética da OAB/SP com mais de 10 anos em
-          sala de aula e mais de 3.000 alunos aprovados no Exame da Ordem.
+          Tenha acesso ao material completo que já aprovou mais de 3 mil alunos
+          na OAB. Criado por um ex-relator do Tribunal de Ética da OAB/SP com
+          mais de 10 anos em sala de aula.
         </p>
 
         {/* CTA */}
@@ -130,38 +131,33 @@ export function HeroSection({ checkoutUrl }: { checkoutUrl: string }) {
 /* ═══════════════════════════════════════════════
    2. PROBLEMA
    ═══════════════════════════════════════════════ */
-export function ProblemSection() {
+export function ProblemSection({ checkoutUrl }: { checkoutUrl: string }) {
   const problems = [
     {
-      icon: "🎓",
-      text: "Você se forma em Direito e descobre que não pode advogar sem a aprovação na OAB",
-    },
-    {
       icon: "📚",
-      text: "Ética Profissional não é ensinada na faculdade voltada para a prova — você chega sem base",
+      text: "Ética Profissional não é ensinada na faculdade voltada para a prova e por isso muitos acabam reprovando",
     },
     {
       icon: "📊",
-      text: "É uma das matérias com mais questões na prova, e a maioria dos candidatos ignora",
+      text: "É uma das matérias com mais questões na prova, e a maioria dos candidatos não passam por ignorar",
     },
     {
       icon: "😰",
-      text: "Muitos reprovam por 2 ou 3 pontos que poderiam ter vindo de Ética",
+      text: "Muitos deixam de passar por 2 ou 3 pontos que poderiam ter vindo de Ética",
     },
     {
       icon: "⏳",
-      text: "Cada reprovação = mais meses esperando, mais taxa, mais ansiedade",
+      text: "Cada reprovação significa mais meses esperando, mais taxa e mais ansiedade que poderia ser evitado",
     },
   ];
 
   return (
-    <section className="py-10 sm:py-14 bg-dark-950">
+    <section className="py-10 sm:py-14 bg-[#0f1117]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <SectionTitle light>
-          A faculdade te formou em Direito.
-          <br />
+          A faculdade te formou em Direito,{" "}
           <span className="gradient-gold-text">
-            Mas não te preparou para a OAB.
+            mas não te preparou para a OAB
           </span>
         </SectionTitle>
 
@@ -180,6 +176,10 @@ export function ProblemSection() {
             </div>
           ))}
         </div>
+
+        <div className="text-center mt-8">
+          <CtaButton href={checkoutUrl} label="QUERO MUDAR ISSO AGORA" size="md" />
+        </div>
       </div>
     </section>
   );
@@ -188,9 +188,9 @@ export function ProblemSection() {
 /* ═══════════════════════════════════════════════
    3. VIRADA
    ═══════════════════════════════════════════════ */
-export function TurningPointSection() {
+export function TurningPointSection({ checkoutUrl }: { checkoutUrl: string }) {
   return (
-    <section className="py-10 sm:py-14 bg-dark-900/40">
+    <section className="py-10 sm:py-14 bg-[#0a0c12]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
         <Divider />
         <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white mt-8 mb-6 leading-tight">
@@ -200,9 +200,9 @@ export function TurningPointSection() {
         </h2>
         <p className="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-2xl mx-auto">
           10 capítulos cobrindo todos os artigos do Estatuto da OAB e do Código de
-          Ética, 40 questões com gabarito comentado, quadros comparativos e as
-          pegadinhas que mais aparecem — criado por quem já esteve{" "}
-          <strong className="text-zinc-200">do outro lado da banca</strong> e
+          Ética, <strong className="text-zinc-200 underline">40 questões com gabarito comentado, quadros comparativos e as
+          pegadinhas que mais aparecem</strong> — criado por quem já esteve{" "}
+          do outro lado da banca e
           já aprovou mais de 3.000 alunos.
         </p>
 
@@ -213,8 +213,20 @@ export function TurningPointSection() {
               src="/sumario.webp"
               alt="Sumário — 13 capítulos cobrindo todo o conteúdo de Ética para OAB"
               className="w-full"
+              loading="lazy"
             />
           </div>
+        </div>
+
+        <div className="flex justify-center mt-6">
+          <div className="inline-flex items-start gap-2.5 px-5 py-3 rounded-xl border border-gold-500/20 bg-gold-500/5">
+            <span className="text-gold-400 font-bold text-sm mt-0.5">BÔNUS:</span>
+            <span className="text-sm text-zinc-300">Aulão ao vivo antes da prova para revisão e tira-dúvidas</span>
+          </div>
+        </div>
+
+        <div className="text-center mt-8">
+          <CtaButton href={checkoutUrl} label="QUERO MATERIAL COMPLETO" size="md" />
         </div>
 
         <Divider />
@@ -226,7 +238,7 @@ export function TurningPointSection() {
 /* ═══════════════════════════════════════════════
    3.5. O QUE VOCÊ VAI APRENDER (conteúdo real)
    ═══════════════════════════════════════════════ */
-export function ContentSection() {
+export function ContentSection({ checkoutUrl }: { checkoutUrl: string }) {
   const chapters = [
     {
       num: "01",
@@ -281,7 +293,7 @@ export function ContentSection() {
   ];
 
   return (
-    <section className="py-10 sm:py-14 bg-dark-950">
+    <section className="py-10 sm:py-14 bg-[#0a0c12]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <SectionTitle
           light
@@ -291,31 +303,13 @@ export function ContentSection() {
           <span className="gradient-gold-text">dentro do guia</span>
         </SectionTitle>
 
-        <div className="grid gap-3 sm:grid-cols-2">
-          {chapters.map((ch) => (
-            <div
-              key={ch.num}
-              className="flex gap-4 p-4 rounded-xl border border-zinc-800/40 bg-dark-900/30 hover:border-gold-500/20 transition-colors"
-            >
-              <span className="text-2xl font-bold text-gold-500/30 font-display flex-shrink-0 leading-none mt-0.5">
-                {ch.num}
-              </span>
-              <div>
-                <h3 className="font-semibold text-white text-sm sm:text-base mb-1">
-                  {ch.title}
-                </h3>
-                <p className="text-xs text-zinc-500 leading-relaxed">
-                  {ch.topics}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <ExpandableChapters chapters={chapters} />
 
         <div className="mt-8 text-center">
-          <p className="text-sm text-zinc-400">
+          <p className="text-sm text-zinc-400 mb-6">
             + Quadros comparativos, dicas de ouro para a prova e análise das pegadinhas mais recorrentes
           </p>
+          <CtaButton href={checkoutUrl} label="QUERO TER ACESSO AO CONTEÚDO" size="md" />
         </div>
       </div>
     </section>
@@ -325,7 +319,7 @@ export function ContentSection() {
 /* ═══════════════════════════════════════════════
    4. AUTORIDADE
    ═══════════════════════════════════════════════ */
-export function AuthoritySection() {
+export function AuthoritySection({ checkoutUrl }: { checkoutUrl: string }) {
   const credentials = [
     "Sócio Advogado — Cremasco & Vianna Sociedade de Advogados",
     "Professor Especialista em Ética Profissional e Direito do Trabalho",
@@ -335,7 +329,7 @@ export function AuthoritySection() {
   ];
 
   return (
-    <section className="py-10 sm:py-14 bg-dark-950">
+    <section className="py-10 sm:py-14 bg-[#0f1117]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <SectionTitle light sub="Conheça quem está por trás deste material">
           Criado por quem já esteve{" "}
@@ -381,6 +375,10 @@ export function AuthoritySection() {
               ))}
             </ul>
           </div>
+        </div>
+
+        <div className="text-center mt-8">
+          <CtaButton href={checkoutUrl} label="QUERO APRENDER COM ELE" size="md" />
         </div>
       </div>
     </section>
@@ -467,7 +465,7 @@ export function WhatYouGetSection() {
    ═══════════════════════════════════════════════ */
 export function OfferSection({ checkoutUrl }: { checkoutUrl: string }) {
   return (
-    <section id="oferta" className="py-10 sm:py-14 bg-dark-950">
+    <section id="oferta" className="py-10 sm:py-14 bg-[#0f1117]">
       <div className="max-w-md mx-auto px-4 sm:px-6">
         <div className="relative rounded-2xl border-2 border-gold-500/30 bg-gradient-to-b from-dark-800/80 to-dark-900/90 p-6 sm:p-8 glow-gold">
           {/* Discount badge */}
@@ -541,7 +539,7 @@ export function OfferSection({ checkoutUrl }: { checkoutUrl: string }) {
             </div>
 
             {/* CTA */}
-            <CtaButton href={checkoutUrl} label="GARANTIR OFERTA ESPECIAL" />
+            <CtaButton href={checkoutUrl} label="GARANTIR OFERTA" />
 
             {/* Guarantee */}
             <div className="flex items-center gap-3 bg-dark-950/60 border border-zinc-800/60 rounded-xl p-4 text-left">
@@ -576,7 +574,7 @@ export function OfferSection({ checkoutUrl }: { checkoutUrl: string }) {
 /* ═══════════════════════════════════════════════
    7. PROVA SOCIAL
    ═══════════════════════════════════════════════ */
-export function SocialProofSection() {
+export function SocialProofSection({ checkoutUrl }: { checkoutUrl: string }) {
   const prints = [
     {
       src: "/depoimento-1.webp",
@@ -601,7 +599,7 @@ export function SocialProofSection() {
   ];
 
   return (
-    <section className="py-10 sm:py-14 bg-dark-900/40">
+    <section className="py-10 sm:py-14 bg-[#0f1117]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <SectionTitle light sub="Prints reais de alunos que estudaram com o Prof. Leonardo">
           O que os alunos dizem{" "}
@@ -624,9 +622,13 @@ export function SocialProofSection() {
           ))}
         </div>
 
-        <p className="text-center text-sm text-zinc-500 mt-8">
+        <p className="text-center text-sm text-zinc-500 mt-8 mb-6">
           Conversas reais entre alunos e o Prof. Leonardo no Instagram e WhatsApp
         </p>
+
+        <div className="text-center">
+          <CtaButton href={checkoutUrl} label="QUERO O MESMO RESULTADO" size="md" />
+        </div>
       </div>
     </section>
   );
@@ -635,7 +637,7 @@ export function SocialProofSection() {
 /* ═══════════════════════════════════════════════
    8. PARA QUEM É
    ═══════════════════════════════════════════════ */
-export function ForWhoSection() {
+export function ForWhoSection({ checkoutUrl }: { checkoutUrl: string }) {
   const forWho = [
     "Estudantes de Direito que vão prestar a OAB",
     "Quem já reprovou e precisa garantir pontos em Ética",
@@ -643,69 +645,29 @@ export function ForWhoSection() {
     "Quem quer um material direcionado, sem montar roteiro de estudo sozinho",
   ];
 
-  const notForWho = [
-    "Quem já é aprovado na OAB e não precisa mais da prova",
-    "Quem busca um curso completo de todas as matérias da OAB",
-    "Quem não vai dedicar tempo para estudar o material",
-  ];
-
   return (
-    <section className="py-10 sm:py-14 bg-dark-950">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+    <section className="py-10 sm:py-14 bg-[#0a0c12]">
+      <div className="max-w-md mx-auto px-4 sm:px-6">
         <SectionTitle light>Para quem é <span className="gradient-gold-text">este material</span></SectionTitle>
 
-        <div className="grid gap-6 sm:grid-cols-2">
-          {/* For who */}
-          <div className="rounded-2xl border border-green-500/20 bg-green-500/5 p-6">
-            <h3 className="font-bold text-green-400 text-base mb-4 flex items-center gap-2">
-              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M16.403 12.652a3 3 0 0 0 0-5.304 3 3 0 0 0-3.75-3.751 3 3 0 0 0-5.305 0 3 3 0 0 0-3.751 3.75 3 3 0 0 0 0 5.305 3 3 0 0 0 3.75 3.751 3 3 0 0 0 5.305 0 3 3 0 0 0 3.751-3.75Zm-2.546-4.46a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Para quem é
-            </h3>
-            <ul className="space-y-3">
-              {forWho.map((item, i) => (
-                <li
-                  key={i}
-                  className="flex items-start gap-2 text-sm text-zinc-300"
-                >
-                  <span className="text-green-400 mt-0.5 flex-shrink-0">
-                    ✓
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="rounded-2xl border border-green-500/20 bg-green-500/5 p-6">
+          <ul className="space-y-3">
+            {forWho.map((item, i) => (
+              <li
+                key={i}
+                className="flex items-start gap-2 text-sm text-zinc-300"
+              >
+                <span className="text-green-400 mt-0.5 flex-shrink-0">
+                  ✓
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          {/* Not for who */}
-          <div className="rounded-2xl border border-red-500/20 bg-red-500/5 p-6">
-            <h3 className="font-bold text-red-400 text-base mb-4 flex items-center gap-2">
-              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22Z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Para quem NÃO é
-            </h3>
-            <ul className="space-y-3">
-              {notForWho.map((item, i) => (
-                <li
-                  key={i}
-                  className="flex items-start gap-2 text-sm text-zinc-300"
-                >
-                  <span className="text-red-400 mt-0.5 flex-shrink-0">✕</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="text-center mt-8">
+          <CtaButton href={checkoutUrl} label="É PRA MIM, QUERO GARANTIR" size="md" />
         </div>
       </div>
     </section>
@@ -744,7 +706,7 @@ export function FaqSection() {
   ];
 
   return (
-    <section className="py-10 sm:py-14 bg-dark-900/40">
+    <section className="py-10 sm:py-14 bg-[#0a0c12]">
       <div className="max-w-2xl mx-auto px-4 sm:px-6">
         <SectionTitle light>Perguntas <span className="gradient-gold-text">frequentes</span></SectionTitle>
 
@@ -786,7 +748,7 @@ export function FaqSection() {
    ═══════════════════════════════════════════════ */
 export function FinalCtaSection({ checkoutUrl }: { checkoutUrl: string }) {
   return (
-    <section className="py-10 sm:py-14 bg-dark-950 relative overflow-hidden">
+    <section className="py-10 sm:py-14 bg-[#0f1117] relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(201,154,17,0.06)_0%,transparent_60%)]" />
 
       <div className="relative max-w-2xl mx-auto px-4 sm:px-6 text-center">
