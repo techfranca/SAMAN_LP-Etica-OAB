@@ -14,8 +14,8 @@ import {
 } from "./sections";
 
 export default function Home() {
-  const CHECKOUT_URL =
-    "#"; // Substituir pelo link de checkout da Hotmart
+  const CHECKOUT_URL = "#oferta";
+  const HOTMART_URL = "https://pay.hotmart.com/L103078598Q?off=4vfc2nmx&checkoutMode=10";
 
   return (
     <main className="min-h-screen bg-dark-950">
@@ -26,7 +26,7 @@ export default function Home() {
       <ContentSection checkoutUrl={CHECKOUT_URL} />
       <SocialProofSection checkoutUrl={CHECKOUT_URL} />
       <ForWhoSection checkoutUrl={CHECKOUT_URL} />
-      <OfferSection checkoutUrl={CHECKOUT_URL} />
+      <OfferSection checkoutUrl={HOTMART_URL} />
       <FaqSection />
       <FinalCtaSection checkoutUrl={CHECKOUT_URL} />
       <Footer />
