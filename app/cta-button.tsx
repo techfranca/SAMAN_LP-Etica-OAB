@@ -16,18 +16,20 @@ export function CtaButton({
     md: "px-6 py-4 text-sm sm:text-base w-full sm:w-auto",
   };
 
-  function handleClick(e: React.MouseEvent<HTMLAnchorElement>) {
-    if (href.startsWith("#")) {
-      e.preventDefault();
-      const target = document.getElementById(href.slice(1));
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }
-  }
-
   return (
-    <a href={href} onClick={handleClick} className={`${base} ${sizes[size]}`}>
+    <a
+      href={href}
+      onClick={(e) => {
+        if (href.startsWith("#")) {
+          e.preventDefault();
+          const el = document.getElementById(href.slice(1));
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
+      }}
+      className={`${base} ${sizes[size]}`}
+    >
       {label}
       <svg
         className="ml-2 h-5 w-5"
