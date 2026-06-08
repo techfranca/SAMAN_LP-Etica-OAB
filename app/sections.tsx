@@ -583,7 +583,7 @@ export function SocialProofSection() {
       alt: "Aluno: Mestre passei. Gabaritei ética.",
     },
     {
-      src: "/depoimento-2.jpg",
+      src: "/depoimento-2.webp",
       alt: "Aluno: Por conta de sua ajuda, também gabaritei ética. Aquela aula de manhã foi sensacional.",
     },
     {
