@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+
 export function CtaButton({
   href,
   label = "QUERO SER APROVADO NA OAB",
@@ -9,6 +11,26 @@ export function CtaButton({
   label?: string;
   size?: "lg" | "md";
 }) {
+  const ref = useRef<HTMLAnchorElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !href.startsWith("#")) return;
+
+    function handleClick(e: MouseEvent) {
+      e.preventDefault();
+      e.stopPropagation();
+      const target = document.getElementById(href.slice(1));
+      if (target) {
+        const y = target.getBoundingClientRect().top + window.pageYOffset - 10;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+
+    el.addEventListener("click", handleClick);
+    return () => el.removeEventListener("click", handleClick);
+  }, [href]);
+
   const base =
     "inline-flex items-center justify-center font-bold tracking-wide rounded-lg transition-all duration-300 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white shadow-lg shadow-green-500/20 cursor-pointer";
   const sizes = {
@@ -17,19 +39,7 @@ export function CtaButton({
   };
 
   return (
-    <a
-      href={href}
-      onClick={(e) => {
-        if (href.startsWith("#")) {
-          e.preventDefault();
-          const el = document.getElementById(href.slice(1));
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        }
-      }}
-      className={`${base} ${sizes[size]}`}
-    >
+    <a ref={ref} href={href} className={`${base} ${sizes[size]}`}>
       {label}
       <svg
         className="ml-2 h-5 w-5"
