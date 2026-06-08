@@ -429,7 +429,7 @@ export function WhatYouGetSection() {
    ═══════════════════════════════════════════════ */
 export function OfferSection({ checkoutUrl }: { checkoutUrl: string }) {
   return (
-    <section id="oferta" className="py-10 sm:py-14 bg-[#0f1117] scroll-mt-5">
+    <section id="oferta" className="py-10 sm:py-14 bg-[#0f1117]">
       <div className="max-w-md mx-auto px-4 sm:px-6">
         <div className="relative rounded-2xl border-2 border-gold-500/30 bg-gradient-to-b from-dark-800/80 to-dark-900/90 p-6 sm:p-8 glow-gold">
           {/* Discount badge */}
