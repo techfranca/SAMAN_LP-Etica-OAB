@@ -35,7 +35,27 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${sora.variable} ${outfit.variable} antialiased`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              document.addEventListener('click', function(e) {
+                var link = e.target.closest('a[href="#oferta"]');
+                if (link) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  var el = document.getElementById('oferta');
+                  if (el) {
+                    var y = el.getBoundingClientRect().top + window.pageYOffset - 10;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                  }
+                }
+              }, true);
+            `,
+          }}
+        />
+      </body>
     </html>
   );
 }
