@@ -1,43 +1,6 @@
 import { ExpandableChapters } from "./expandable-chapters";
 import { ExpandableTestimonials } from "./expandable-testimonials";
-
-/* ─── Shared ─── */
-const CHECKOUT_LABEL = "QUERO SER APROVADO NA OAB";
-
-function CtaButton({
-  href,
-  label = CHECKOUT_LABEL,
-  size = "lg",
-}: {
-  href: string;
-  label?: string;
-  size?: "lg" | "md";
-}) {
-  const base =
-    "inline-flex items-center justify-center font-bold tracking-wide rounded-lg transition-all duration-300 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white shadow-lg shadow-green-500/20";
-  const sizes = {
-    lg: "px-8 py-5 text-base sm:text-lg w-full sm:w-auto",
-    md: "px-6 py-4 text-sm sm:text-base w-full sm:w-auto",
-  };
-  return (
-    <a href={href} className={`${base} ${sizes[size]}`}>
-      {label}
-      <svg
-        className="ml-2 h-5 w-5"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={2.5}
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-        />
-      </svg>
-    </a>
-  );
-}
+import { CtaButton } from "./cta-button";
 
 function SectionTitle({
   children,
@@ -466,7 +429,7 @@ export function WhatYouGetSection() {
    ═══════════════════════════════════════════════ */
 export function OfferSection({ checkoutUrl }: { checkoutUrl: string }) {
   return (
-    <section id="oferta" className="py-10 sm:py-14 bg-[#0f1117]">
+    <section id="oferta" className="py-10 sm:py-14 bg-[#0f1117]" style={{ scrollMarginTop: "20px" }}>
       <div className="max-w-md mx-auto px-4 sm:px-6">
         <div className="relative rounded-2xl border-2 border-gold-500/30 bg-gradient-to-b from-dark-800/80 to-dark-900/90 p-6 sm:p-8 glow-gold">
           {/* Discount badge */}
