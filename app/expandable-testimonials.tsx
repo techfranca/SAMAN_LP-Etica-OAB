@@ -17,7 +17,7 @@ export function ExpandableTestimonials({ prints }: { prints: Testimonial[] }) {
         {visible.map((p, i) => (
           <div
             key={i}
-            className="rounded-xl border border-white/15 bg-dark-950/60 p-2 hover:border-white/30 transition-colors"
+            className="rounded-xl border-2 border-white/30 bg-dark-950/60 p-2.5 hover:border-white/50 transition-colors"
           >
             <img
               src={p.src}
