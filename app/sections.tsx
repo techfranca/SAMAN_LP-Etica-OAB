@@ -81,7 +81,7 @@ export function HeroSection({ checkoutUrl }: { checkoutUrl: string }) {
         <p className="text-base sm:text-lg lg:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
           Tenha acesso ao material completo que já aprovou mais de 3 mil alunos
           na OAB. Criado por um ex-relator do Tribunal de Ética da OAB/SP com
-          mais de 10 anos em sala de aula.
+          mais de 20 anos em sala de aula.
         </p>
 
         {/* CTA */}
@@ -164,9 +164,9 @@ export function TurningPointSection({ checkoutUrl }: { checkoutUrl: string }) {
         </h2>
         <p className="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-2xl mx-auto">
           10 capítulos cobrindo todos os artigos do Estatuto da OAB e do Código de
-          Ética, <strong className="text-zinc-200 underline">40 questões com gabarito comentado, quadros comparativos e as
-          pegadinhas que mais aparecem</strong> — criado por quem já esteve{" "}
-          do outro lado da banca e
+          Ética, <strong className="text-zinc-200 underline">quadros comparativos e as
+          pegadinhas que mais aparecem</strong> — criado por{" "}
+          quem mais entende de Ética Profissional para a OAB e
           já aprovou mais de 3.000 alunos.
         </p>
 
@@ -286,7 +286,8 @@ export function ContentSection({ checkoutUrl }: { checkoutUrl: string }) {
 export function AuthoritySection({ checkoutUrl }: { checkoutUrl: string }) {
   const credentials = [
     "Sócio Advogado — Cremasco & Vianna Sociedade de Advogados",
-    "Professor Especialista em Ética Profissional e Direito do Trabalho",
+    "Professor Especialista em Ética Profissional e Direito do Trabalho (20 anos)",
+    "Ex-Assessor da Presidência da 06ª Turma do Tribunal de Ética e Disciplina da OAB/SP (10 anos)",
     "Ex-Relator da 06ª Turma do Tribunal de Ética e Disciplina da OAB/SP (10 anos)",
     "Autor Jurídico — Obras publicadas sobre Ética para a OAB",
     "Mais de 3.000 alunos aprovados no Exame da Ordem",
@@ -296,8 +297,8 @@ export function AuthoritySection({ checkoutUrl }: { checkoutUrl: string }) {
     <section className="py-10 sm:py-14 bg-[#0f1117]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <SectionTitle light sub="Conheça quem está por trás deste material">
-          Criado por quem já esteve{" "}
-          <span className="gradient-gold-text">do outro lado da banca</span>
+          Criado por quem{" "}
+          <span className="gradient-gold-text">mais entende de Ética para a OAB</span>
         </SectionTitle>
 
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
@@ -380,7 +381,7 @@ export function WhatYouGetSection() {
   return (
     <section className="py-10 sm:py-14 bg-dark-900/40">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <SectionTitle light sub="Guia escrito + videoaulas + aulão ao vivo pré-prova">
+        <SectionTitle light sub="Guia completo + aulão ao vivo pré-prova">
           Tudo que você precisa para{" "}
           <span className="gradient-gold-text">dominar Ética na OAB</span>
         </SectionTitle>
@@ -470,15 +471,6 @@ export function OfferSection({ checkoutUrl }: { checkoutUrl: string }) {
                   <path fillRule="evenodd" d="M16.403 12.652a3 3 0 0 0 0-5.304 3 3 0 0 0-3.75-3.751 3 3 0 0 0-5.305 0 3 3 0 0 0-3.751 3.75 3 3 0 0 0 0 5.305 3 3 0 0 0 3.75 3.751 3 3 0 0 0 5.305 0 3 3 0 0 0 3.751-3.75Zm-2.546-4.46a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clipRule="evenodd" />
                 </svg>
                 <p className="text-sm text-zinc-300">
-                  <strong className="text-white">Videoaulas Completas</strong> — curso em vídeo com o Prof. Leonardo
-                  <span className="text-red-400 ml-1 line-through text-xs font-bold">R$ 99</span>
-                </p>
-              </div>
-              <div className="flex items-start gap-2.5">
-                <svg className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.403 12.652a3 3 0 0 0 0-5.304 3 3 0 0 0-3.75-3.751 3 3 0 0 0-5.305 0 3 3 0 0 0-3.751 3.75 3 3 0 0 0 0 5.305 3 3 0 0 0 3.75 3.751 3 3 0 0 0 5.305 0 3 3 0 0 0 3.751-3.75Zm-2.546-4.46a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clipRule="evenodd" />
-                </svg>
-                <p className="text-sm text-zinc-300">
                   <strong className="text-white">Aulão ao Vivo Pré-Prova</strong> — revisão no dia anterior ao dia do exame
                   <span className="text-red-400 ml-1 line-through text-xs font-bold">R$ 99</span>
                 </p>
@@ -490,7 +482,7 @@ export function OfferSection({ checkoutUrl }: { checkoutUrl: string }) {
               <p className="text-base text-zinc-400 mb-2">
                 De{" "}
                 <span className="line-through text-red-400 text-2xl font-bold">
-                  R$ 297
+                  R$ 198
                 </span>
               </p>
               <p className="text-xs text-zinc-500 mb-1 uppercase tracking-wider">por apenas</p>
@@ -648,7 +640,7 @@ export function FaqSection() {
     },
     {
       q: "Posso acessar pelo celular?",
-      a: "Sim. Tanto as videoaulas quanto o guia escrito funcionam em qualquer dispositivo — celular, tablet ou computador.",
+      a: "Sim. O guia funciona em qualquer dispositivo — celular, tablet ou computador.",
     },
   ];
 
