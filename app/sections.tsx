@@ -628,7 +628,7 @@ export function FaqSection() {
     },
     {
       q: "O que é a revisão ao vivo pré-prova?",
-      a: "Um aulão que acontece na manhã do dia da prova, para você ir com o conteúdo fresco. Você recebe o link com antecedência.",
+      a: "Um aulão que acontece no dia anterior ao exame, para você ir com o conteúdo fresco. Você recebe o link com antecedência.",
     },
     {
       q: "Só o guia já é suficiente para passar?",
