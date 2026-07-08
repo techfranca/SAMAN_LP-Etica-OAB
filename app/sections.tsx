@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ExpandableChapters } from "./expandable-chapters";
 import { ExpandableTestimonials } from "./expandable-testimonials";
 import { CtaButton } from "./cta-button";
@@ -69,10 +70,13 @@ export function HeroSection({ checkoutUrl }: { checkoutUrl: string }) {
         {/* Capa do e-book */}
         <div className="flex justify-center mb-8">
           <div className="w-56 sm:w-64 rounded-xl overflow-hidden shadow-2xl shadow-gold-500/10 border border-zinc-800/40">
-            <img
+            <Image
               src="/ebook-capa-v2.webp"
               alt="Ética Profissional para o Exame da OAB — Leonardo Cremasco"
-              className="w-full"
+              width={640}
+              height={905}
+              className="w-full h-auto"
+              priority
             />
           </div>
         </div>
@@ -173,11 +177,12 @@ export function TurningPointSection({ checkoutUrl }: { checkoutUrl: string }) {
         {/* Print do sumário */}
         <div className="flex justify-center mt-10">
           <div className="w-72 sm:w-80 rounded-xl overflow-hidden shadow-2xl shadow-gold-500/10 border border-zinc-800/40">
-            <img
+            <Image
               src="/sumario.webp"
               alt="Sumário — 13 capítulos cobrindo todo o conteúdo de Ética para OAB"
-              className="w-full"
-              loading="lazy"
+              width={640}
+              height={905}
+              className="w-full h-auto"
             />
           </div>
         </div>
@@ -304,9 +309,11 @@ export function AuthoritySection({ checkoutUrl }: { checkoutUrl: string }) {
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
           {/* Photo */}
           <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-2xl border-2 border-gold-500/20 flex-shrink-0 glow-gold overflow-hidden">
-            <img
+            <Image
               src="/professor.webp"
               alt="Prof. Leonardo Cremasco Sartorio"
+              width={448}
+              height={448}
               className="w-full h-full object-cover object-top"
             />
           </div>
