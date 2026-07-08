@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 type Testimonial = {
   src: string;
@@ -19,11 +20,12 @@ export function ExpandableTestimonials({ prints }: { prints: Testimonial[] }) {
             key={i}
             className="rounded-xl border-2 border-white/30 bg-dark-950/60 p-2.5 hover:border-white/50 transition-colors"
           >
-            <img
+            <Image
               src={p.src}
               alt={p.alt}
-              className="w-full rounded-lg"
-              loading="lazy"
+              width={600}
+              height={800}
+              className="w-full h-auto rounded-lg"
             />
           </div>
         ))}
