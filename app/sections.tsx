@@ -443,7 +443,7 @@ export function OfferSection({ checkoutUrl }: { checkoutUrl: string }) {
           {/* Escassez */}
           <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-2.5 text-center mb-4">
             <p className="text-xs font-bold text-red-400">
-              Oferta especial válida somente até 30/06/2026
+              Oferta especial válida somente até 31/07/2026
             </p>
           </div>
 
