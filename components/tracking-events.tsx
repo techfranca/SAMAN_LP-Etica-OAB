@@ -12,7 +12,7 @@ const BUTTON_MAP: Record<string, string> = {
   'QUERO APRENDER COM ELE': 'Botao4',
   'QUERO TER ACESSO AO CONTEÚDO': 'Botao5',
   'QUERO O MESMO RESULTADO': 'Botao6',
-  'GARANTIR OFERTA': 'Botao7',
+  'GARANTIR OFERTA': 'Botao7_Oferta', // botão da seção de oferta leva o sufixo
   'QUERO PASSAR NA OAB': 'Botao8',
 };
 
@@ -92,6 +92,16 @@ export function TrackingEvents() {
     const t30 = window.setTimeout(() => umaVez('30s'), 30_000);
     const t60 = window.setTimeout(() => umaVez('60s'), 60_000);
 
+    // ViuOferta: a seção de oferta (id="oferta") entrou na tela, ou seja, a pessoa chegou no preço. Uma vez por visita.
+    const oferta = document.getElementById('oferta');
+    let obsOferta: IntersectionObserver | undefined;
+    if (oferta && typeof IntersectionObserver !== 'undefined') {
+      obsOferta = new IntersectionObserver((entradas) => {
+        if (entradas.some((e) => e.isIntersecting)) { umaVez('ViuOferta'); obsOferta?.disconnect(); }
+      }, { rootMargin: '0px 0px -25% 0px' });
+      obsOferta.observe(oferta);
+    }
+
     function handleClick(e: MouseEvent) {
       const el = (e.target as Element).closest('a, button');
       if (!el) return;
@@ -109,6 +119,7 @@ export function TrackingEvents() {
     return () => {
       window.clearTimeout(t30);
       window.clearTimeout(t60);
+      obsOferta?.disconnect();
       window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('click', handleClick, true);
     };
