@@ -6,6 +6,28 @@ function getCookie(name: string): string {
   return '';
 }
 
+/** `_fbc` montado do fbclid quando o cookie ainda não existe: sem isso o primeiro evento de quem chega do anúncio sai sem fbc. */
+function getFbc(): string {
+  const cookie = getCookie('_fbc');
+  if (cookie) return cookie;
+  let fbclid = new URLSearchParams(location.search).get('fbclid') || '';
+  if (!fbclid) { try { fbclid = sessionStorage.getItem('trk_fbclid') || ''; } catch { /* sem armazenamento */ } }
+  return fbclid ? `fb.1.${Date.now()}.${fbclid}` : '';
+}
+
+/** Id anônimo e persistente do visitante: melhora a correspondência do Meta em página sem formulário. */
+export function getExternalId(): string {
+  try {
+    const salvo = localStorage.getItem('frc_eid');
+    if (salvo) return salvo;
+    const novo = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 10)}`;
+    localStorage.setItem('frc_eid', novo);
+    return novo;
+  } catch {
+    return '';
+  }
+}
+
 export function trackEvent(eventName: string, eventData: Record<string, unknown> = {}) {
   const eventId = `${eventName}_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
 
@@ -24,7 +46,8 @@ export function trackEvent(eventName: string, eventData: Record<string, unknown>
       event_id: eventId,
       event_source_url: window.location.href,
       fbp: getCookie('_fbp'),
-      fbc: getCookie('_fbc'),
+      fbc: getFbc(),
+      external_id: getExternalId(),
     }),
   }).catch(() => {});
 }

@@ -1,12 +1,18 @@
+import crypto from 'node:crypto';
 import { NextRequest, NextResponse } from 'next/server';
 
 const PIXEL_ID = '2136424236368281';
-const CAPI_TOKEN = 'EAAXoWwR5ZC9UBRilfRfgYTzPvKvoeo5oaOIZBW6xbsyWZApFkJCd44H6k8oPygVDPdt8d3UAlWlybUtL1yHwgFEI2wIagwKmQ51ZAdVPNvvUmJKydt1IBlzb3iApJWxd9UsCiI0wl3ZCl22p69dt2Qd006JsNmD5pFHxO4BcvLUl6X91zmadH1HVJlfo7B6z1bwZDZD';
+// Token SEMPRE no ambiente (META_CAPI_TOKEN na Vercel), nunca no código.
+const CAPI_TOKEN = process.env.META_CAPI_TOKEN;
+
+const sha256 = (v: string) => crypto.createHash('sha256').update(v.trim().toLowerCase()).digest('hex');
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { event_name, event_id, event_source_url, fbp, fbc } = body;
+    const { event_name, event_id, event_source_url, fbp, fbc, external_id } = body;
+    if (!event_name || !event_id) return NextResponse.json({ ok: false }, { status: 400 });
+    if (!CAPI_TOKEN) return NextResponse.json({ ok: true, capi: false });
 
     const ip =
       req.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
@@ -26,18 +32,19 @@ export async function POST(req: NextRequest) {
           client_user_agent: userAgent,
           ...(fbp ? { fbp } : {}),
           ...(fbc ? { fbc } : {}),
+          ...(external_id ? { external_id: sha256(String(external_id)) } : {}),
         },
       }],
       access_token: CAPI_TOKEN,
     };
 
-    await fetch(`https://graph.facebook.com/v21.0/${PIXEL_ID}/events`, {
+    const r = await fetch(`https://graph.facebook.com/v21.0/${PIXEL_ID}/events`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: r.ok, capi: true });
   } catch {
     return NextResponse.json({ ok: false }, { status: 500 });
   }
